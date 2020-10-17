@@ -1,37 +1,47 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import { css } from '@emotion/core';
+import React from "react"
+import { Link, useStaticQuery, graphql } from "gatsby"
+import { css } from "@emotion/core"
+import Navegacion from "./navegacion"
 
 const Header = () => {
+  // obtener logo
+  const { logo } = useStaticQuery(graphql`
+    query {
+      logo: file(relativePath: { eq: "logo.svg" }) {
+        publicURL
+      }
+    }
+  `)
+  //   console.log(logo)
 
-    return ( 
+  return (
+    <header
+      css={css`
+        background-color: #0d283b;
+        padding: 1rem;
+      `}
+    >
+      <div
+        css={css`
+          max-width: 120rem;
+          margin: 0 auto;
+          text-align: center;
 
-        <header
-            css={css`
-                background-color: #0D283B;
-                padding: 1rem;
-            `}
-        >
-            <div
-                css={css`
-                    max-width: 120rem;
-                    margin: 0 auto;
-                    text-align: center;
+          @media (min-width: 768px) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+        `}
+      >
+        <Link to="/">
+          <img src={logo.publicURL} alt="Logotipo Bienes Raices" />
+        </Link>
 
-                    @media (min-width: 768px) {
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                    }
-                `}
-            >
-                <Link to="/">
-                    <h1>HEADER</h1>
-                </Link>
-
-            </div>
-        </header>
-     );
+        <Navegacion />
+      </div>
+    </header>
+  )
 }
- 
-export default Header;
+
+export default Header
