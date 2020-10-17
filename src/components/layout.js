@@ -1,6 +1,7 @@
 import React from "react"
 import Helmet from "react-helmet"
 import { Global, css } from "@emotion/core"
+import Header from "./header"
 
 const Layout = ({ children }) => {
   return (
@@ -68,7 +69,7 @@ const Layout = ({ children }) => {
           rel="stylesheet"
         ></link>
       </Helmet>
-      <h1>Gatsby website</h1>
+      <Header />
       {children}
     </>
   )
