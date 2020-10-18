@@ -4,21 +4,27 @@ import useInicio from "../hooks/useInicio"
 import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 import BackgroundImage from "gatsby-background-image"
+import heroCSS from "../css/hero.module.css"
+import Encuentra from "../components/encuentra"
+import ListadoPropiedades from "../components/listadoPropiedades"
+
+const ImagenBackground = styled(BackgroundImage)`
+  height: 600px;
+`
 
 const Index = () => {
   const inicio = useInicio()
   const { nombre, contenido, imagen } = inicio[0]
 
-  console.log(imagen)
+  // console.log(imagen)
 
-  const ImagenBackground = styled(BackgroundImage)`
-    height: 600px;
-  `
   return (
     <Layout>
       <ImagenBackground tag="section" fluid={imagen.sharp.fluid} fadeIn="soft">
-        <div>
-          <h1>Venta de casas y departamentos exclusivos </h1>
+        <div className={heroCSS.imagenbg}>
+          <h1 className={heroCSS.titulo}>
+            Venta de casas y departamentos exclusivos
+          </h1>
         </div>
       </ImagenBackground>
       <main>
@@ -38,6 +44,8 @@ const Index = () => {
           </p>
         </div>
       </main>
+      <Encuentra />
+      <ListadoPropiedades /> 
     </Layout>
   )
 }
