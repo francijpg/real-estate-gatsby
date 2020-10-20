@@ -8,7 +8,7 @@ const ListadoPropiedades = () => {
   const resultado = usePropiedades()
   const [propiedades, guardarPropiedades] = useState([])
 
-  console.log(resultado)
+  // console.log(resultado)
   useEffect( () => {
     guardarPropiedades(resultado);
   },[])
