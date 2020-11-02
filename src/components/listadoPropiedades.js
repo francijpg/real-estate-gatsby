@@ -8,7 +8,7 @@ import useFiltro from "../hooks/useFiltro"
 const ListadoPropiedades = () => {
   const resultado = usePropiedades()
   // propiedades mantener la referencia al filtro (usePropiedades) original (listar todo sin filtro)
-  const [propiedades] = useState(resultado);
+  const [propiedades] = useState(resultado)
   const [filtradas, guardarFiltradas] = useState([])
   // filtrado de propiedades
   const { categoria, FiltroUI } = useFiltro()
@@ -16,7 +16,9 @@ const ListadoPropiedades = () => {
   // console.log(resultado)
   useEffect(() => {
     if (categoria) {
-      const filtro = propiedades.filter(propiedad => propiedad.categorias.nombre === categoria)
+      const filtro = propiedades.filter(
+        propiedad => propiedad.categorias.nombre === categoria
+      )
       guardarFiltradas(filtro)
     } else {
       guardarFiltradas(propiedades)
